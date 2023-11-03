@@ -1,11 +1,13 @@
 package com.itheima.controller;
 
+import com.itheima.pojo.Address;
 import com.itheima.pojo.Result;
 import com.itheima.pojo.Student;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -66,5 +68,20 @@ public class HelloController {
         System.out.println("ok");
         return "ok";
     }
+
+    @RequestMapping("/method4")
+    public Result method4(){
+        ArrayList<Student> list = new ArrayList<>();
+        list.add(new Student("丁真",12,new Address("浙江","杭州")));
+        list.add(new Student("丁真",12,new Address("浙江","杭州")));
+        return Result.success(list);
+    }
+
+    @RequestMapping("/method5")
+    public Result method5(){
+        Student student = new Student("丁真", 12, new Address("浙江", "杭州"));
+        return Result.success(student);
+    }
+
 
 }
